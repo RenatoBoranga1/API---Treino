@@ -91,7 +91,7 @@ Esta API foi desenvolvida para gerenciar clientes, planos de treino e treinos as
     "email": "joao.silva.atualizado@example.com"
    }
 
-   **Deletar cliente:**
+**Deletar cliente:**
 - `DELETE /clientes/{id}`
 
 ### Plano
@@ -173,14 +173,12 @@ Esta API foi desenvolvida para gerenciar clientes, planos de treino e treinos as
       "planoId": 1
   }
 
-### Atualizar treino:
-
-**PUT /treinos/{id}**
-
-```json
-{
-    "descricao": "Treino de Peito Avançado"
-}
+**Atualizar treino:**
+- `PUT /treinos/{id}`
+  ```json
+  {
+      "descricao": "Treino de Peito Avançado"
+  }
 
 **Deletar treino:**
 - `DELETE /treinos/{id}`
@@ -189,7 +187,7 @@ Esta API foi desenvolvida para gerenciar clientes, planos de treino e treinos as
 
 ### Clone o repositório:
 
-```sh
+sh
 git clone <URL_DO_REPOSITORIO>
 cd apiTreino
 
@@ -201,7 +199,7 @@ cd apiTreino
     Execute a aplicação:
     sh
 
-sh
+## sh
     mvn spring-boot:run
     Acesse a aplicação em http://localhost:8080.
 
