@@ -1,234 +1,253 @@
- API Treino
+ #  API Treino
 
-Visão Geral
+
+
+
+## Visão Geral
 
 Esta API foi desenvolvida para gerenciar clientes, planos de treino e treinos associados a cada plano. Ela utiliza o framework Spring Boot para criação da aplicação e JPA/Hibernate para persistência de dados.
 
-Tecnologias Utilizadas
 
-Java 11+
+## Tecnologias Utilizadas:
 
-Spring Boot (Spring Data JPA, Spring Validation, Spring Web)
+      Java 11+
 
-H2 Database (banco de dados em memória para desenvolvimento/teste)
+      Spring Boot (Spring Data JPA, Spring Validation, Spring Web)
 
-Maven (gerenciamento de dependências)
+      H2 Database (banco de dados em memória para desenvolvimento/teste)
 
-Postman (ou outra ferramenta para testes de API)
+      Maven (gerenciamento de dependências)
 
-Estrutura do Projeto
+      Postman (ou outra ferramenta para testes de API)
 
-Pacotes Principais:
 
-model: Contém as classes de domínio como Cliente, Plano e Treino.
 
-repository: Interfaces para acesso aos dados persistidos.
+## Estrutura do Projeto
 
-service: Contém a lógica de negócios.
 
-controller: Controladores que gerenciam os endpoints da API.
+        Pacotes Principais:
 
-Modelagem de Dados
+        model: Contém as classes de domínio como Cliente, Plano e Treino.
 
-Entidades Principais:
+        repository: Interfaces para acesso aos dados persistidos.
 
-Cliente
+        service: Contém a lógica de negócios.
 
-Representa um cliente da academia.
+        controller: Controladores que gerenciam os endpoints da API.
 
-Atributos:
 
-id: Identificador único do cliente.
 
-nome: Nome completo do cliente.
+## Modelagem de Dados
 
-email: Endereço de e-mail do cliente.
+     Entidades Principais:
 
-planos: Lista de planos associados ao cliente.
+ ### Cliente
 
-Relacionamento:
+     Representa um cliente da academia.
 
-Um cliente pode ter muitos planos.
+     
+     Atributos:
 
-Plano
+     id: Identificador único do cliente.
 
-Representa um plano de treino associado a um cliente.
+     nome: Nome completo do cliente.
 
-Atributos:
+     email: Endereço de e-mail do cliente.
 
-id: Identificador único do plano.
+     planos: Lista de planos associados ao cliente.
+     
+     Relacionamento:
 
-nomePlano: Nome descritivo do plano.
+     Um cliente pode ter muitos planos.
 
-numeroDeTreinos: Quantidade total de treinos no plano.
+   
+   ### Plano
 
-cliente: Referência ao cliente dono do plano.
+      Representa um plano de treino associado a um cliente.
 
-treinos: Lista de treinos associados ao plano.
 
-Relacionamento:
+   ### Atributos:
 
-Um plano pertence a um cliente.
+     id: Identificador único do plano.
 
-Um plano pode ter muitos treinos.
+     nomePlano: Nome descritivo do plano.
 
-Treino
+     numeroDeTreinos: Quantidade total de treinos no plano.
 
-Representa um treino individual dentro de um plano.
+     cliente: Referência ao cliente dono do plano.
 
-Atributos:
+     treinos: Lista de treinos associados ao plano.
 
-id: Identificador único do treino.
+     Relacionamento:
 
-descricao: Descrição do treino.
+     Um plano pertence a um cliente.
 
-plano: Referência ao plano associado.
+     Um plano pode ter muitos treinos.
 
-Relacionamento:
+  
+   ### Treino
 
-Um treino pertence a um plano.
+     Representa um treino individual dentro de um plano.
 
-Endpoints Disponíveis
+     Atributos:
 
-Cliente
+     id: Identificador único do treino.
 
-Listar todos os clientes:
+     descricao: Descrição do treino.
 
-GET /clientes
+     plano: Referência ao plano associado.
 
-Obter cliente por ID:
+     Relacionamento:
 
-GET /clientes/{id}
+     Um treino pertence a um plano.
 
-Criar um novo cliente:
 
-POST /clientes
-Body (JSON):
 
-{
+## Endpoints Disponíveis
+
+ ### Cliente
+
+     Listar todos os clientes:
+
+     GET /clientes
+
+     Obter cliente por ID:
+
+     GET /clientes/{id}
+
+     Criar um novo cliente:
+
+ 
+### POST /clientes
+
+    Body (JSON):
+
+    {
     "nome": "João da Silva",
     "email": "joao.silva@example.com"
-}
+    }
 
-Atualizar cliente:
+ ### Atualizar cliente:
+ 
+    PUT /clientes/{id}
+    Body (JSON):
 
-PUT /clientes/{id}
-Body (JSON):
-
-{
+    {
     "nome": "João da Silva Atualizado",
     "email": "joao.silva.atualizado@example.com"
-}
+    }
 
-Deletar cliente:
+ ### Deletar cliente:
 
-DELETE /clientes/{id}
+    DELETE /clientes/{id}
 
-Plano
+ ### Plano
 
-Listar todos os planos:
+    Listar todos os planos:
 
-GET /planos
+    GET /planos
 
-Obter plano por ID:
+    Obter plano por ID:
 
-GET /planos/{id}
+    GET /planos/{id}
 
-Criar um novo plano:
+ ### Criar um novo plano:
 
-POST /planos
-Body (JSON):
+    POST /planos
+    Body (JSON):
 
-{
+    {
     "nomePlano": "Plano A",
     "numeroDeTreinos": 10,
     "clienteId": 1
-}
+    }
 
-Atualizar plano:
+ ### Atualizar plano:
 
-PUT /planos/{id}
-Body (JSON):
+    PUT /planos/{id}
+    Body (JSON):
 
-{
+    {
     "nomePlano": "Plano A Atualizado",
     "numeroDeTreinos": 15
-}
+    }
 
-Deletar plano:
+ ### Deletar plano:
 
-DELETE /planos/{id}
+    DELETE /planos/{id}
 
-Treino
+### Treino
 
-Listar todos os treinos:
+    Listar todos os treinos:
 
-GET /treinos
+    GET /treinos
 
-Obter treino por ID:
+    Obter treino por ID:
 
-GET /treinos/{id}
+    GET /treinos/{id}
+    
 
-Criar um novo treino:
+### Criar um novo treino:
 
-POST /treinos
-Body (JSON):
+    POST /treinos
+    Body (JSON):
 
-{
+    {
     "descricao": "Treino de Peito",
     "planoId": 1
-}
+    }
 
-Atualizar treino:
+### Atualizar treino:
 
-PUT /treinos/{id}
-Body (JSON):
+    PUT /treinos/{id}
+    Body (JSON):
 
-{
+    {
     "descricao": "Treino de Peito Avançado"
-}
+    }
 
-Deletar treino:
+ ### Deletar treino:
 
-DELETE /treinos/{id}
+    DELETE /treinos/{id}
 
-Configuração Local
+ ### Configuração Local
 
-Clone o repositório:
+    Clone o repositório:
 
-git clone <URL_DO_REPOSITORIO>
-cd apiTreino
+    git clone <URL_DO_REPOSITORIO>
+    cd apiTreino
 
-Configure o ambiente:
+ ### Configure o ambiente:
 
-Certifique-se de ter o Java 11+ instalado.
+    Certifique-se de ter o Java 11+ instalado.
 
-Configure o Maven no PATH.
+ ### Configure o Maven no PATH.
 
-Execute a aplicação:
+    Execute a aplicação:
 
-mvn spring-boot:run
+    mvn spring-boot:run
 
-Acesse a aplicação em http://localhost:8080.
+    Acesse a aplicação em http://localhost:8080.
 
-Testando a API
+ ### Testando a API
 
-Use o Postman, Insomnia ou qualquer cliente HTTP para consumir os endpoints disponíveis.
+    Use o Postman, Insomnia ou qualquer cliente HTTP para consumir os endpoints disponíveis.
 
-O banco de dados H2 pode ser acessado em http://localhost:8080/h2-console (usuário padrão: sa, senha: vazia).
+    O banco de dados H2 pode ser acessado em http://localhost:8080/h2-console (usuário padrão: sa, senha: vazia).
 
-Próximos Passos
+ ## Próximos Passos
 
-Implementar autenticação e autorização (Spring Security).
+    Implementar autenticação e autorização (Spring Security).
 
-Adicionar validações personalizadas para campos específicos.
+    Adicionar validações personalizadas para campos específicos.
 
-Criar testes unitários e de integração.
+    Criar testes unitários e de integração.
+    
 
-Contribuições
+ ## Contribuições
 
-Sinta-se à vontade para abrir issues ou enviar pull requests para melhorias no projeto!
+    Sinta-se à vontade para abrir issues ou enviar pull requests para melhorias no projeto!
 
-Autor
+ ## Autor
 
-Desenvolvido por [Seu Nome].
+    Desenvolvido por Renato Boranga.
